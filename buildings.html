@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <meta charset="utf-8"/>
+    <title>InnoMaps Admin</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/select-field.css" type="text/css">
+    <link rel="stylesheet" href="css/building_style.css" type="text/css">
+    <script src="jquery.js"></script>
+
+    <script>
+        $(function () {
+            $("#includedHeader").load("include/header.html");
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#includedMap").load("include/map.html");
+        });
+    </script>
+    =
+
+
+</head>
+<body>
+
+<div id="includedHeader"></div>
+<!-- начало врапер -->
+<div id="lpblock">
+
+    <h2>Create buildings</h2>
+
+</div>
+
+<section id="wrapper">
+    <div id="middle">
+        <div id="content">
+            <div id="colLeft">
+
+                <div id="includedMap"></div>
+
+            </div><!-- Конец коллефт -->
+
+            <aside id="colRight">
+
+                <div class="rightBox">
+
+                    <form method="get" action="/name" target="_blank">
+                        <input name="q" id="name-building" value="" placeholder="Name...">
+                        <input id="name-buildingsub" type=submit value="">
+                    </form>
+
+                    <form method="get" action="/floors_num" target="_blank">
+                        <input name="q" id="floors-num" value="" placeholder="Floors number...">
+                        <input id="floors-numsub" type=submit value="">
+                    </form>
+
+
+                    <label class="btn-upload">
+                        <input type="file" name="fileupload">
+                        <button class="btn">Upload icon</button>
+                    </label>
+
+
+                    <div class='selectBox'>
+                        <span class='selected'></span>
+                        <span class='selectArrow'>▼</span>
+                        <div class="selectOptions">
+
+                            <span class="selectOption" value="Option 1">mdpi</span>
+                            <span class="selectOption" value="Option 2">hdpi</span>
+                            <span class="selectOption" value="Option 3">xhdpi</span>
+                            <span class="selectOption" value="Option 4">xxhdpi</span>
+                            <span class="selectOption" value="Option 5">xxxhdpi</span>
+
+                            <span class="selectOption" value="Option 6">svg</span>
+
+                        </div>
+                    </div>
+
+                    <script type='text/javascript' src="js/select.box.js"></script>
+
+                </div>
+
+
+            </aside><!-- Конец колрайт -->
+
+        </div><!-- Конец контент -->
+    </div><!-- Конец мидл -->
+</section><!-- Конец врапер -->
+
+<!-- Начало футер -->
+
+<footer id="footer">
+    <div id="footerInner">
+
+    </div><!-- Конец футериннер -->
+</footer><!-- Конец футер -->
+
+</body>
+</html>
+
