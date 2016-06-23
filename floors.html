@@ -3,32 +3,87 @@
 <head>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-
     <meta charset="utf-8"/>
+    <title>Floors</title>
 
-    <title>Buildings</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link rel="stylesheet" href="css/styles.css" type="text/css">
+    <link rel="stylesheet" href="css/select-field.css" type="text/css">
+    <link rel="stylesheet" href="css/building_style.css" type="text/css">
+    <link rel="stylesheet" href="css/drag-drop.css" rel="stylesheet"/>
     <script src="jquery.js"></script>
 
     <script>
         $(function () {
-            $("#includedContent").load("include/header.html");
+            $("#includedHeader").load("include/header.html");
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#includedMap").load("include/map.html");
         });
     </script>
 
 
 </head>
-<body>
+<body class="container">
 
-<div id="includedContent"></div>
-
+<div id="includedHeader"></div>
 <div id="lpblock">
 
     <h2>Upload floor plans</h2>
 
 </div>
 
+<section id="wrapper">
+    <div id="middle">
+        <div id="content">
+            <div id="colLeft">
+
+                <div id="includedMap"></div>
+
+            </div>
+
+            <aside id="colRight">
+                <div class="rightBox">
+                    <div id="drag-and-drop-zone" class="uploader">
+                        <div>Drag &amp; Drop Images Here</div>
+                        <div class="or">-or-</div>
+                        <div class="browser">
+                            <label>
+                                <span>Click to open the file Browser</span>
+                                <input type="file" name="files[]" multiple="multiple" title='Click to add Files'>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="fileList">
+
+                    <!-- JUST DO IT -->
+
+                </div>
+
+
+
+                <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+                <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+                <script type="text/javascript" src="js/drag-drop.loader.js"></script>
+
+
+                <script type='text/javascript' src="js/drag-drop.box.js"></script>
+
+
+            </aside>
+
+        </div>
+    </div>
+</section>
+
 
 </body>
 </html>
+

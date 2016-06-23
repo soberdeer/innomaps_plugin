@@ -23,4 +23,4 @@ function enableSelectBoxes(){
             $(this).parent().siblings('span.selected').html($(this).html());
         });
     });
-}//-->
+}
