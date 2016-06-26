@@ -1,3 +1,7 @@
+function add_log() {
+  console.log.apply(console, arguments);
+}
+
 function add_file(id, file) {
     var template = '' +
         '<div class="file" id="uploadFile' + id + '">' +

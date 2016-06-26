@@ -8,7 +8,7 @@ function enableSelectBoxes(){
         $(this).attr('value',$(this).children('div.selectOptions').children('span.selectOption:first').attr('value'));
 
         $(this).children('span.selected,span.selectArrow').click(function(){
-            if($(this).parent().children('div.selectOptions').css('display') == 'none'){
+            if($(this).parent().children('div.selectOptions').css('display') === 'none'){
                 $(this).parent().children('div.selectOptions').css('display','block');
             }
             else
