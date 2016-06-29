@@ -30,10 +30,10 @@ a:hover {
 
 
 #wrapper {
-    margin-top:40px;
+    position: relative;
     width: 1200px;
     margin: 0 auto;
-    height: auto !important;
+    height: 100%;
 }
 
 .header{
@@ -67,7 +67,8 @@ a:hover {
     margin-left:45px;
     float:left;
     width:350px;
-    position:relative;
+    height: 100%;
+    padding-bottom: 30px;
 }
 
 #middle:after {
@@ -132,4 +133,53 @@ a:hover {
     padding-left: 20px;
     font-size:2em;
 }
+#footer  {
 
+    position:absolute;
+    height:30px;
+    width:350px;
+    background: #66bb6a;
+    bottom: 0;
+}
+
+#footerInner  table.text {
+    position:absolute;
+    border:0px solid #000;
+    width:100%;
+    height:100%;
+    bottom: 0;
+
+    border-spacing: 0;
+
+}
+
+
+
+.footernav table ul li{
+    position:absolute;
+}
+
+
+.leftcol li {
+    float: left;
+}
+.rightcol li{
+    float: right;
+}
+
+
+.footernav ul li a{
+    margin-top:0px;
+    font-weight:100;
+    border-right:0px solid #adadad;
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    line-height:20px;
+    font-size:18px;
+    padding:0px 0px 0px 0px;
+}
+
+.footernav ul li a:hover{
+    color:#333;
+}

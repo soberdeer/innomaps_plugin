@@ -21,6 +21,12 @@
         });
     </script>
 
+    <script>
+        $(function () {
+            $("#includedPageSelector").load("/static/html/include/page-selector.html");
+        });
+    </script>
+
 
 
 </head>
@@ -82,14 +88,23 @@
                     <script type='text/javascript' src="/static/js/select.box.js"></script>
 
                 </div>
+                <footer id="footer">
+                    <div id="footerInner">
+                        <nav class="footernav">
 
+                            <ul>
+                                <li class="rightcol"><a href="floors.html">To floors</a></li>
+                            </ul>
+
+                        </nav>
+                    </div>
+                </footer>
 
             </aside>
 
         </div>
     </div>
 </section>
-
 
 </body>
 </html>

@@ -1,0 +1,21 @@
+<div class="pageselector"><a id="pageprev" class="page-btn" title="Back">Back</a> <a id="pagenext" class="page-btn"
+                                                                                       title="Next">Next</a></div>
+<?if($PAGE_SELECTOR1$)?>
+<div style="display: none;">$PAGE_SELECTOR$</div><?endif?>
+<script>
+    if ($(".pagesBlockuz1").html() == "") {
+        $("#pageprev").hide();
+        $("#pagenext").hide();
+    }
+    else {
+        var nowpage = $(".pagesBlockuz1 .swchItemA span").html();
+        if (nowpage == "" || nowpage == 1) {
+            $("#pageprev").hide();
+        } else $("#pageprev").attr("href", "/load/0-" + (nowpage - 1) + "");
+        var nextpage = $(".pagesBlockuz1 .swchItem").html();
+        var al = $(".pagesBlockuz1 a.swchItem:last span").html();
+        if (al != "»") {
+            $("#pagenext").hide();
+        } else $("#pagenext").attr("href", "/load/0-" + (+nowpage + 1) + "");
+    }
+</script>
