@@ -30,5 +30,6 @@
     "connect-multiparty": "^2.0.0",
     "express": "^4.14.0",
     "grunt-express-server": "^0.5.3"
+    "node-uuid": "^1.4.7"
   }
 }
