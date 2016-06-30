@@ -1,5 +1,5 @@
 function add_log() {
-  console.log.apply(console, arguments);
+    console.log.apply(console, arguments);
 }
 
 function add_file(id, file) {
@@ -26,7 +26,7 @@ function update_file_progress(id, percent) {
 
 
 $('#drag-and-drop-zone').dmUploader({
-    url: 'upload.php',
+    url: '/upload',
     dataType: 'json',
     allowedTypes: 'image/*',
     extFilter: 'png;kml;svg',

@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/soberdeer/innomaps_plugin/issues"
   },
-  "homepage": "https://github.com/soberdeer/innomaps_plugin#readme",
+  "homepage": "hhttps://github.com/soberdeer/innomaps_plugin#readme",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
@@ -26,6 +26,8 @@
     "load-grunt-tasks": "^3.5.0"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "connect-multiparty": "^2.0.0",
     "express": "^4.14.0",
     "grunt-express-server": "^0.5.3"
   }

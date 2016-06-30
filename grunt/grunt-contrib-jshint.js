@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         freeze: true,
         maxdepth: 5,
         maxcomplexity: 5,
-        maxparams: 3,
+        maxparams: 5,
         maxstatements: 50,
         shadow: 'inner',
         predef: ['-Promise'],
