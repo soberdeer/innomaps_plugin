@@ -37,3 +37,5 @@ function saveOverlay() {
 }
 
 //todo: save room
+
+//todo: save paths
