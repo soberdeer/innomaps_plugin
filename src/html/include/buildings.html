@@ -1,0 +1,36 @@
+<form id="building" action="form_action.asp" target="_blank">
+    <input name="q" id="name-building" value="" placeholder="Name...">
+    <input name="q" id="floors-num" value="" placeholder="Floors number...">
+    <input name="q" id="street" value="" placeholder="Street...">
+    <input name="q" id="home-number" value="" placeholder="Building number...">
+    <input name="q" id="home-block" value="" placeholder="Building block...">
+</form>
+
+<button id="add_marker" onclick="addMarkerBuilding()">Add marker</button>
+<br>
+
+<label class="btn-upload">
+    <input type="file" name="fileupload">
+    <button class="btn">Upload icon</button>
+</label>
+
+
+<div class='selectBox'>
+    <span class='selected'></span>
+    <span class='selectArrow'>▼</span>
+    <div class="selectOptions">
+
+        <span class="selectOption" value="Option 1">mdpi</span>
+        <span class="selectOption" value="Option 2">hdpi</span>
+        <span class="selectOption" value="Option 3">xhdpi</span>
+        <span class="selectOption" value="Option 4">xxhdpi</span>
+        <span class="selectOption" value="Option 5">xxxhdpi</span>
+        <span class="selectOption" value="Option 6">svg</span>
+
+    </div>
+
+    <br>
+    <button id="save_marker" onclick="saveMarker()">Save marker</button>
+
+    <br>
+</div>

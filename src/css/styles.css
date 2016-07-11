@@ -18,6 +18,10 @@ aside, nav, footer, header, section {
     display: block;
 }
 
+.header .topMenuRight li {
+  cursor: pointer;
+}
+
 ul {
     list-style: none;
 }
@@ -70,6 +74,7 @@ a:hover {
     float: left;
     width: 350px;
     height: 100%;
+    height: auto;
     padding-bottom: 30px;
 }
 

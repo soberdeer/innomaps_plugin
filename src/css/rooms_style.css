@@ -11,7 +11,7 @@
     margin-bottom: 30px;
 }
 
-#room-building-namesub {
+#room-floor-namesub {
     position: absolute;
     right: 15px;
     top: 15px;
@@ -21,7 +21,7 @@
     border: 0px dashed #333;
 }
 
-#room-building-namesub:hover {
+#room-floor-namesub:hover {
     cursor: pointer;
 }
 

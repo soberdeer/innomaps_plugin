@@ -1,0 +1,36 @@
+<div class="selectBuilding">
+    <!--todo: select from all buildings in db OR building from previous screen default-->
+    <span class="selectOption" value="Option 1">mdpi</span>
+</div>
+
+<select name="shipping">
+    <!--todo: get list of types of rooms from db-->
+<!--    <option value="1"> standard</option>
+    <option value="2"> 2-day</option>
+    <option value="3"> overnight</option-->>
+</select>
+
+<div id="js-example-change-attributes"><input type="range" min="1"
+                                              max="5" step="1"
+                                              data-rangeslider>
+    <button class="button button--small">Next floor</button>
+    <br>Floor
+    <output></output>
+    <br>
+</div>
+
+
+<form id="room-param" action="form_action.asp" target="_blank">
+    <input name="q" id="room-num" value="" placeholder="Room number...">
+    <input name="q" id="room-name" value="" placeholder="Room name...">
+</form>
+
+<br>
+<button id="add_marker_room" onclick="addMarkerRoom()">Place marker</button>
+<button id="more-rooms" onclick="clearForm()">+1</button>
+
+
+<br>
+<button id="remove_marker_room" onclick="clearMarkersRoom()">Remove all markers</button>
+
+<script></script>

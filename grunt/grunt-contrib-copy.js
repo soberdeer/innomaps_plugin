@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     grunt.config('copy', {
         lib: {
             files: [{
@@ -17,7 +17,12 @@ module.exports = function(grunt) {
             files: [{
                 expand: true,
                 cwd: 'src',
-                src: ['**/*.js'],
+                src: ['js/**/*.js'],
+                dest: 'build'
+            }, {
+                expand: true,
+                cwd: 'src',
+                src: ['**/*.json'],
                 dest: 'build'
             }]
         },
@@ -28,6 +33,15 @@ module.exports = function(grunt) {
                 src: ['**/*.html', '**/*.css'],
                 dest: 'build'
             }]
+        },
+        img: {
+            files: [{
+                expand: true,
+                cwd: 'src',
+                src: ['images/**/*'],
+                dest: 'build'
+            }]
         }
+
     });
 };

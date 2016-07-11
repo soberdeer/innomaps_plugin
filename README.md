@@ -1,1 +1,1 @@
-# innomaps_plugin
+# innomaps
