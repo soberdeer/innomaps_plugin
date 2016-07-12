@@ -37,7 +37,9 @@ function setPoint() {
         if (check !== startPoint) {
             endPoint = check;
             makeConnection();
-        } else alert('same point! choose another')
+        } else {
+          alert('same point! choose another');
+        }
     } else {
         toggleBounce();
         startPoint = {lat: room_marker.getPosition().lat, lng: room_marker.getPosition().lng};

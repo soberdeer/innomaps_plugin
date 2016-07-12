@@ -1,4 +1,9 @@
 <script src="/static/js/drag-drop.box.js"></script>
+<script>
+initDmUploader('#drag-and-drop-zone', function(data){
+  console.log('upload finished', data);
+});
+</script>
 
 <div id="drag-and-drop-zone" class="uploader">
     <div>Drag &amp; Drop Images Here</div>

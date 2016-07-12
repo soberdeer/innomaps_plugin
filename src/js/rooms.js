@@ -16,6 +16,7 @@ function addMarkerRoom() {
         return null;
         //todo: get from db or from select list on 'rooms' screen
     }
+    //for tests
     var type = 'hall';
     setMarker(type);
     map.setCenter(room_marker.getPosition());
