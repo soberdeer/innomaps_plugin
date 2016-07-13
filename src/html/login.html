@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InnoMaps Login</title>
+
+    <link rel="stylesheet" href="/static/css/styles.css" media="screen" type="text/css" />
+
+    <link rel="stylesheet" href="/static/css/login.css" media="screen" type="text/css" />
+
+</head>
+<body class="container">
+<header class="header">
+    <div id="headerInner">
+    </div>
+</header>
+
+<div id="login-form">
+    <h1>InnoMaps plugin Login</h1>
+
+    <fieldset>
+        <form action="javascript:void(0);" method="get">
+            <input type="email" required value="Login" onBlur="if(this.value=='')this.value='Login'" onFocus="if(this.value=='Login')this.value='' ">
+            <input type="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' ">
+            <input type="submit" value="Log in">
+            <footer class="clearfix">
+                <p><span class="info">?</span><a href="#">Forgot password?</a></p>
+            </footer>
+        </form>
+    </fieldset>
+
+</div>
+</body>
+</html>
