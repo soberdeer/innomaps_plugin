@@ -12,9 +12,8 @@ function addOverlay() {
     var swBound = new google.maps.LatLng(55.752828, 48.742661);
     var neBound = new google.maps.LatLng(55.754597, 48.744469);
     var bounds = new google.maps.LatLngBounds(swBound, neBound);
-
-    //todo: get image src from db
-    var srcImage = '/static/images/ai6_floor1.png';
+    
+    var srcImage = window.data;
 
     overlay = new DebugOverlay(bounds, srcImage, map);
 
@@ -221,5 +220,7 @@ function setMapOnAll(arr, map) {
         arr[i].setMap(map);
     }
 }
+
+
 
 addOverlay();

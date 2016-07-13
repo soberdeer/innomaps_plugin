@@ -14,14 +14,31 @@ function createStreet(street, success) {
     }, success);
 }
 
-function createBuildingNum(building_num, success) {
-    return $.post(window._global.urls.innoServerUrl + '/resources/building_num', {
-        name: building_num.name
+function createBuilding(building, success) {
+    return $.post(window._global.urls.innoServerUrl + '/resources/building', {
+        number: building.number,
+        block: building.block,
+        description: building.description,
+        coordinateid: building.coordinateid,
+        streetid: building.streetid
     }, success);
 }
 
-function createBuildingBlock(building_block, success) {
-    return $.post(window._global.urls.innoServerUrl + '/resources/building_block', {
-        name: building_block.name
+function createPhoto(photo, success) {
+    return $.post(window._global.urls.innoServerUrl + '/resources/photo', {
+        utl: photo.url
+    }, success);
+}
+
+
+
+
+function createFloorOverlay(building, success) {
+    return $.post(window._global.urls.innoServerUrl + '/resources/building', {
+        number: building.number,
+        block: building.block,
+        description: building.description,
+        coordinateid: building.coordinateid,
+        streetid: building.streetid
     }, success);
 }

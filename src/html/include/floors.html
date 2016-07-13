@@ -1,8 +1,9 @@
 <script src="/static/js/drag-drop.box.js"></script>
 <script>
-initDmUploader('#drag-and-drop-zone', function(data){
-  console.log('upload finished', data);
-});
+    initDmUploader('#drag-and-drop-zone', function (data) {
+        console.log('upload finished', data);
+        srcImage = data;
+    });
 </script>
 
 <div id="drag-and-drop-zone" class="uploader">
@@ -19,3 +20,6 @@ initDmUploader('#drag-and-drop-zone', function(data){
 </div>
 
 <div id="fileList"></div>
+<br>
+<br>
+<button id="edit-floor" url="/static/html/include/floors_edit.html" tmpl="floorsEditTmpl">Edit floor</button>
