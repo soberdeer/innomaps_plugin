@@ -22,14 +22,8 @@ function clearMarker() {
 }
 
 function streetsDropdown() {
-    var select = document.getElementById("building");
+    var select = document.getElementById("street-options");
     var options = getStreets();
 
-    for (var i = 0; i < options.length; i++) {
-        var opt = options[i];
-        var element = document.createElement("option");
-        element.textContent = opt;
-        element.value = opt;
-        select.appendChild(element);
-    }
+    dropdown(select, options);
 }

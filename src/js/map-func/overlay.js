@@ -5,6 +5,17 @@ var markerB;
 
 DebugOverlay.prototype = new google.maps.OverlayView();
 
+
+
+function buildingsDropdown() {
+    var select = document.getElementById("floors_get_building");
+    var options = getBuildings();
+    dropdown(select, options);
+    
+}
+
+
+
 function addOverlay() {
     if (markers.length >= 1) {
         deleteAll();
@@ -221,6 +232,5 @@ function setMapOnAll(arr, map) {
     }
 }
 
-
-
 addOverlay();
+

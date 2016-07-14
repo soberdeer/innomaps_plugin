@@ -1,3 +1,5 @@
+<script src="/static/js/building.js"></script>
+
 <form id="building" action="form_action.asp" target="_blank">
     <input name="q" id="floors-num" value="" placeholder="Floors number..."><br><br>
     <select id="street-options" class="street">
@@ -7,12 +9,12 @@
     <input name="q" id="home-block" value="" placeholder="Building block..."><br><br>
 </form>
 
-<button id="add_marker" onclick="addMarkerBuilding(); this.disabled=true;">Add marker</button>
+<button id="add_marker" onclick="addMarkerBuilding()" disabled="true">Add marker</button>
 <br>
 
 
 <br>
-<button id="save_marker" onclick="saveMarker()">Save marker</button>
+<button id="save_marker" onclick="saveBuilding()">Save marker</button>
 
 <br>
 </div>

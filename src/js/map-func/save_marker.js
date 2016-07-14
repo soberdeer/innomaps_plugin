@@ -1,30 +1,33 @@
 var floor_num;
-var streetid;
-var coordinateid;
-var buildingid;
 
 
-function saveMarker() {
+function saveBuilding() {
     var building_elements = document.getElementById('building');
     var building_name = building_elements.elements[0].value;
     floor_num = building_elements.elements[1].value;
-    var street = building_elements.elements[2].value;
+
+    var street = document.getElementById('street-options').options[document.getElementById('street-options').selectedIndex].value;
     var building_num = building_elements.elements[3].value;
     var building_block = building_elements.elements[4].value;
     var lat = marker.getPosition().lat();
     var lng = marker.getPosition().lng();
 
+    var streetPromise = function(){if (!checkJson(street, data.street)) {
 
-    var streetPromise = Promise.resolve(createStreet({
-        name: street
-    })).then(function (result) {
-        var parsedResult = /0\. Street with id=(\d+) was successfully created/.exec(result);
-        if (parsedResult && parsedResult[1]) {
-            return parsedResult[1];
-        } else {
-            throw new Error('street creation failed');
-        }
-    }).catch(creationFailed);
+        Promise.resolve(createStreet({
+            name: street
+        })).then(function (result) {
+            var parsedResult = /0\. Street with id=(\d+) was successfully created/.exec(result);
+            if (parsedResult && parsedResult[1]) {
+                return parsedResult[1];
+            } else {
+                throw new Error('street creation failed');
+            }
+        }).catch(creationFailed);
+    }
+    else {
+        return searchStreetID(street, data.street);
+    }};
 
 
     var coordinatePromise = Promise.resolve(createCoordinate({
@@ -50,6 +53,7 @@ function saveMarker() {
         coordinateid = values[1];
     }).catch(creationFailed);
 
+
     var buildingPromise = Promise.resolve(createBuilding({
         number: building_num,
         block: building_block,
@@ -72,14 +76,16 @@ function saveMarker() {
 
 
 function saveOverlay() {
-    var overlay_elements = document.getElementById('floors');
-    var photo = window.data;
-    var floor = overlay_elements.elements[0].value;
+    var floor_edit_elements = document.getElementById('floor-num_floor-edit');
+    var photo = srcImage;
+    var building_selector = document.getElementById('floors_get_building');
+    var buildingid = searchBuildingId(building_selector.options[building_selector.selectedIndex].value);
+    
+    var floor = floor_edit_elements.elements[0].value;
     var swLat = markerA.getPosition().lat();
     var swLng = markerA.getPosition().lng();
     var neLat = markerB.getPosition().lat();
     var neLng = markerB.getPosition().lng();
-    var photoid;
 
     var photoPromise = Promise.resolve(createPhoto({
         url: photo
@@ -98,8 +104,10 @@ function saveOverlay() {
     }).catch(creationFailed);
 
 
-    var floorPromise = Promise.resolve(createFloorOverlay({
-        name: floor,
+    Promise.resolve(createFloorOverlay({
+        buildingid: buildingid,
+        photoid: photoid,
+        floor: floor,
         southWestLatitude: swLat,
         southWestLongitude: swLng,
         northEastLatitude: neLat,
@@ -110,12 +118,8 @@ function saveOverlay() {
         if (parsedResult && parsedResult[1]) {
             return parsedResult[1];
         } else {
-            throw new Error('number creation failed');
+            throw new Error('overlay creation failed');
         }
-    }).catch(creationFailed);
-
-    Promise.all([floorPromise]).then(function (values) {
-        var floorid = values[0];
     }).catch(creationFailed);
 
 
@@ -128,9 +132,7 @@ function saveOverlay() {
     deleteAll();
     alert(" successfully saved!");
     clearMarker();
-
-
-    //todo save to 'building_floor_overlays'
+    
 }
 
 //todo: save room
