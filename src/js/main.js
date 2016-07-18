@@ -34,8 +34,8 @@ function getCoordinateTypes() {
 }
 
 function getStreets() {
-    $.getJSON(window._global.urls.innoServerUrl + '/resources/street', function(data) {
-        window._global.street = {} && data.street || [];
+    $.getJSON(window._global.urls.innoServerUrl + '/resources/streets', function(data) {
+        window._global.streets = data.streets || [];
     });
 }
 
@@ -44,4 +44,3 @@ function getBuildings() {
         window._global.building = {} && data.building || [];
     });
 }
-

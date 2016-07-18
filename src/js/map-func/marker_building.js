@@ -21,9 +21,3 @@ function clearMarker() {
     marker.setMap(null);
 }
 
-function streetsDropdown() {
-    var select = document.getElementById("street-options");
-    var options = getStreets();
-
-    dropdown(select, options);
-}
