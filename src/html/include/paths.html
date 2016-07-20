@@ -1,1 +1,13 @@
-paths
+<form id="path-param" action="form_action.asp" target="_blank">
+    <select id="building-options" class="building">
+    </select><br><br>
+    <input name="q" id="floor-num" value="" placeholder="Floor...">
+</form>
+
+
+<br>
+<br>
+<button id="show_overlay_path" onclick="showOverlayPath()">Show overlay</button>
+<button id="add_markers_from_db" onclick="addMarkersFromJson()">Show markers from db</button>
+<button id="save-rooms" onclick="saveRoom()">Save room</button>
+<br>

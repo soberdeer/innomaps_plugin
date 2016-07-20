@@ -1,49 +1,61 @@
 var startPoint;
 var endPoint;
+var path_marker;
 var lines = [];
+var db_markers = [];
 
-function addMarkersPaths() {
-    if (room_markers === null) {
-        return null;
-        //todo: get list of coords in building (rooms, doors, halls etc) from db
-    }
 
-    for (var i = 0; i < room_markers.length; i++) {
-        var type = 'hall'; //todo: get type from db
-        setMarkerForPaths(type, room_markers[i]);
-    }
+function dropdownPath() {
+    var select = $('#path-param').find('#building-options');
+    var options = window._global.building;
+    dropdown(select, options);
 }
 
-function setMarkerForPaths(type, room_marker) {
-    var color = typeSwitch(type);
-    room_marker = new google.maps.Marker({
-        position: {lat: room_marker.getPosition().lat, lng: room_marker.getPosition().lng},
-        // todo: get title from db /*title: document.getElementById('room-param').elements[1].value,*/
-        draggable: false,
-        icon: color,
-        map: map
-    });
-    map.setCenter(room_marker.getPosition());
-    room_markers.push(room_marker);
+function showOverlayPath() {
 
-    room_marker.addListener('click', setPoint());
+    var building_id = $('#path-param').find('#building-options').val();
+    var floor = $('#path-param').find('#floor-num').val();
+    var buildingflooroverlay = JSON.search(window._global.buildingflooroverlay, '//*[buildingid="' + building_id + '" and floor="' + floor + '"]');
+
+    addOverlayRooms(buildingflooroverlay);
+}
+
+function getAllBuildingCoordinates() {
+    var arr = [];
+    return arr;//todo
+}
+
+function addMarkersFromJson() {
+    var allCoordinates = getAllBuildingCoordinates();
+    allCoordinates.forEach(function (coordinate) {
+        var element = JSON.search(window._global.coordinate, '//*[id="' + coordinate + '"]')[0];
+        var latlng = new google.maps.LatLng(element.lat, element.lng);
+        path_marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title: element.name
+        });
+        map.setCenter(path_marker.getPosition());
+        path_marker.addListener('click', setPoint());
+        db_markers.push(path_marker);
+    });
+    
 }
 
 
 function setPoint() {
     if (startPoint !== null) {
         toggleBounce();
-        var check = {lat: room_marker.getPosition().lat, lng: room_marker.getPosition().lng};
+        var check = {lat: path_marker.getPosition().lat, lng: path_marker.getPosition().lng};
         if (check !== startPoint) {
             endPoint = check;
             makeConnection();
         } else {
-          alert('same point! choose another');
+            alert('same point! choose another');
         }
     } else {
         toggleBounce();
-        startPoint = {lat: room_marker.getPosition().lat, lng: room_marker.getPosition().lng};
-
+        startPoint = {lat: path_marker.getPosition().lat, lng: path_marker.getPosition().lng};
     }
 
 }

@@ -26,11 +26,6 @@ function streetsDropdown() {
     var select = document.getElementById("street-options");
     var options = window._global.streets;
 
-    options.forEach(function(street){
-      var element = document.createElement("option");
-      element.textContent = street.name;
-      element.value = street.id;
-      select.add(element);
-    });
+    dropdown(select, options);
 
 }

@@ -1,36 +1,25 @@
-<div class="selectBuilding">
-    <!--todo: select from all buildings in db OR building from previous screen default-->
-    <span class="selectOption" value="Option 1">mdpi</span>
-</div>
-
-<select name="shipping">
-    <!--todo: get list of types of rooms from db-->
-<!--    <option value="1"> standard</option>
-    <option value="2"> 2-day</option>
-    <option value="3"> overnight</option-->>
-</select>
-
-<div id="js-example-change-attributes"><input type="range" min="1"
-                                              max="5" step="1"
-                                              data-rangeslider>
-    <button class="button button--small">Next floor</button>
-    <br>Floor
-    <output></output>
-    <br>
-</div>
-
+<script src="/static/js/floor-edit.js"></script>
+<script src="/static/js/rooms.js"></script>
 
 <form id="room-param" action="form_action.asp" target="_blank">
+    <select id="building-options" class="building">
+    </select><br><br>
+    <select id="type-options" class="roomtype">
+    </select><br><br>
+    <input name="q" id="floor-num" value="" placeholder="Floor...">
     <input name="q" id="room-num" value="" placeholder="Room number...">
     <input name="q" id="room-name" value="" placeholder="Room name...">
 </form>
 
 <br>
+<br>
+
+<button id="show_overlay_room" onclick="showOverlay()">Show overlay</button>
 <button id="add_marker_room" onclick="addMarkerRoom()">Place marker</button>
-<button id="more-rooms" onclick="clearForm()">+1</button>
+<button id="remove_marker_room" onclick="clearMarkersRoom()">Remove all markers</button>
+<button id="save-rooms" onclick="saveRoom()">Save room</button>
 
 
 <br>
-<button id="remove_marker_room" onclick="clearMarkersRoom()">Remove all markers</button>
 
 <script></script>

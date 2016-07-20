@@ -1,32 +1,41 @@
-<body tmpl="floorsEditTmpl">
-Select building<br>
-<select id="building-options" class="building-option">
-    <option>Building</option>
-</select><br><br>
+<body>
 
-<form id="floor-num_floor-edit" action="form_action.asp" target="_blank">
-    <input name="q" id="floor" value="" placeholder="Floor..."><br><br>
-</form>
+<script src="/static/js/floor-edit.js"></script>
+<script src="/static/js/map-func/overlay.js"></script>
+<script src="/static/js/map-func/overlay_unbound.js"></script>
+
+    Select building
+    <br>
+    <select id="building-options" class="building">
+    </select>
+    <br>
+    <br>
+
+    <form id="floor-num_floor-edit" action="form_action.asp" target="_blank">
+        <input name="q" id="floor" value="" placeholder="Floor...">
+        <br>
+        <br>
+    </form>
 
 
-<button id="" onclick="addOverlay()">Add overlay</button>
-<br>
-<br>
+    <button id="" onclick="addOverlay()">Add overlay</button>
+    <br>
+    <br>
 
-<button id="hide-overlays" onclick=" hideOverlay()">Hide all overlays</button>
-<br>
-<button id="show-overlays" onclick=" showOverlay()">Show all overlays</button>
-<br>
+    <button id="hide-overlays" onclick=" hideOverlay()">Hide all overlays</button>
+    <br>
+    <button id="show-overlays" onclick=" showOverlay()">Show all overlays</button>
+    <br>
 
 
-<button id="hide-markers" onclick=" hideMarkers()">Hide all markers</button>
-<br>
-<button id="show-markers" onclick=" showMarkers()">Show all markers</button>
-<br>
+    <button id="hide-markers" onclick=" hideMarkers()">Hide all markers</button>
+    <br>
+    <button id="show-markers" onclick=" showMarkers()">Show all markers</button>
+    <br>
 
-<button id="delete-markers" onclick=" deleteAll()">Delete all</button>
-<br>
-<br>
+    <button id="delete-markers" onclick=" deleteAll()">Delete all</button>
+    <br>
+    <br>
 
-<button id="save-overlay" onclick="saveOverlay()">Save floor</button>
+    <button id="save-overlay" onclick="saveOverlay()">Save floor</button>
 </body>

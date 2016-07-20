@@ -5,17 +5,6 @@ var markerB;
 
 DebugOverlay.prototype = new google.maps.OverlayView();
 
-
-
-function buildingsDropdown() {
-    var select = document.getElementById("floors_get_building");
-    var options = getBuildings();
-    dropdown(select, options);
-    
-}
-
-
-
 function addOverlay() {
     if (markers.length >= 1) {
         deleteAll();
@@ -23,8 +12,8 @@ function addOverlay() {
     var swBound = new google.maps.LatLng(55.752828, 48.742661);
     var neBound = new google.maps.LatLng(55.754597, 48.744469);
     var bounds = new google.maps.LatLngBounds(swBound, neBound);
-    
-    var srcImage = window.data;
+
+    var srcImage = window._global.srcImage;
 
     overlay = new DebugOverlay(bounds, srcImage, map);
 
@@ -42,12 +31,10 @@ function addOverlay() {
     overlay.bindTo('sw', markerA, 'position', true);
     overlay.bindTo('ne', markerB, 'position', true);
 
-
     markers.push(markerA);
     markers.push(markerB);
 
     google.maps.event.addListener(markerA, 'drag', function () {
-
         var newPointA = markerA.getPosition();
         var newPointB = markerB.getPosition();
         var newBounds = new google.maps.LatLngBounds(newPointA, newPointB);
@@ -55,7 +42,6 @@ function addOverlay() {
     });
 
     google.maps.event.addListener(markerB, 'drag', function () {
-
         var newPointA = markerA.getPosition();
         var newPointB = markerB.getPosition();
         var newBounds = new google.maps.LatLngBounds(newPointA, newPointB);
@@ -63,7 +49,6 @@ function addOverlay() {
     });
 
     google.maps.event.addListener(markerA, 'dragend', function () {
-
         var newPointA = markerA.getPosition();
         var newPointB = markerB.getPosition();
         console.log("point1" + newPointA);
@@ -233,4 +218,3 @@ function setMapOnAll(arr, map) {
 }
 
 addOverlay();
-

@@ -18,6 +18,7 @@ function addMarkerBuilding() {
 }
 
 function clearMarker() {
-    marker.setMap(null);
+    if (marker) {
+      marker.setMap(null);
+    }
 }
-

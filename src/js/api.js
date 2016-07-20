@@ -30,10 +30,9 @@ function checkJson(item, json) {
 
 function createPhoto(photo, success) {
     return $.post(window._global.urls.innoServerUrl + '/resources/photo', {
-        utl: photo.url
+        url: photo.url
     }, success);
 }
-
 
 function createFloorOverlay(buildingflooroverlay, success) {
     return $.post(window._global.urls.innoServerUrl + '/resources/buildingflooroverlay', {
@@ -44,5 +43,13 @@ function createFloorOverlay(buildingflooroverlay, success) {
         southwestlongitude: buildingflooroverlay.southwestlongitude,
         northeastlatitude: buildingflooroverlay.northeastlatitude,
         northeastlongitude: buildingflooroverlay.northeastlongitude
+    }, success);
+}
+
+function createRoom(room, success) {
+    return $.post(window._global.urls.innoServerUrl + '/resources/room', {
+        buildingid: room.buildingid,
+        coordinateid: room.block,
+        typeid: room.typeid,
     }, success);
 }
