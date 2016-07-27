@@ -1,0 +1,26 @@
+<script src="/static/js/select-building.js"></script>
+<script src="/static/js/map-func/save_room.js"></script>
+<script src="/static/js/marker.js"></script>
+<script src="/static/js/room-overlay.js"></script>
+<script src="/static/js/rooms.js"></script>
+
+<form id="room-param">
+    <select id="building-options" class="building"></select>
+    <br><br>
+    <select id="type-options" class="roomtype"></select>
+    <br><br>
+    <select id="floor-options"></select>
+    <br><br>
+    <input name="q" id="room-num" value="" placeholder="Room number...">
+</form>
+
+<br>
+<br>
+
+<button id="show_overlay_room" class="btn btn-default" onclick="showOverlay()">Show overlay</button>
+<button id="add_marker_room" class="btn btn-default" onclick="addMarkerRoom()">Place marker</button>
+<button id="remove_marker_room" class="btn btn-default" onclick="clearMarkersRoom()">Remove all markers</button>
+<button id="save-rooms" class="btn btn-success" onclick="saveRoom()">Save rooms</button>
+<br>
+
+<script></script>

@@ -48,7 +48,7 @@ h1 a {
 }
 
 .uploader-active {
-    border-color: #0B85A1;
+    border-color: #66bb6a;
 }
 
 .uploader div.or {
@@ -59,7 +59,7 @@ h1 a {
 }
 
 .uploader div.browser label {
-    background-color: #5a7bc2;
+    background-color: #61B265;
     padding: 5px 15px;
     color: white;
     padding: 6px 0px;
@@ -97,7 +97,7 @@ h1 a {
 }
 
 .uploader div.browser label:hover {
-    background-color: #427fed;
+    background-color: #66bb6a;
 }
 
 /*
@@ -145,7 +145,7 @@ h1 a {
 
 #fileList .progress {
     height: 12px;
-    background-color: #00CCFF;
+    background-color: #66bb6a;
 }
 
 #fileList span.success {
@@ -203,7 +203,7 @@ h1 a {
 .alert {
     background-color: #d9edf7;
     border-color: #bce8f1;
-    color: #31708f;
+    color: #61B265;
 
     padding: 15px;
     margin-bottom: 20px;

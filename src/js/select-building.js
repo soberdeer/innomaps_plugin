@@ -1,12 +1,7 @@
-window._global.buildings = window._global.buildings || [];
-
-$(function() {
-    fillBuildingsSelect();
-});
-
 function fillBuildingsSelect() {
     var select = document.getElementById('building-options');
-    Promise.resolve(getBuildings()).then(
+    $(select).empty();
+    return Promise.resolve(getBuildings()).then(
         function(result) {
             result.buildings.forEach(function(building) {
                 var street = window._global.streets.filter(function(street) {
@@ -27,4 +22,29 @@ function fillBuildingsSelect() {
                 }
             });
         });
+}
+
+
+function fillFloorsSelect() {
+    var select = document.getElementById('floor-options');
+    $(select).empty();
+    var buildingId = $('#building-options').val();
+    return Promise.resolve(getBuildingFloorOverlays())
+        .then(filterBuildingOverlays)
+        .then(addFloorOptions);
+
+    function filterBuildingOverlays(result) {
+        return result.buildingflooroverlays.filter(function(overlay) {
+            return overlay.building_id == buildingId;
+        });
+    }
+
+    function addFloorOptions(overlays) {
+        overlays.forEach(function(overlay) {
+            var element = document.createElement('option');
+            element.textContent = overlay.floor;
+            element.value = overlay.floor;
+            select.add(element);
+        });
+    }
 }

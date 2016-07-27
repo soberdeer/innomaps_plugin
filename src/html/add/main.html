@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Innomaps plugin</title>
+
+    <link rel="stylesheet" href="/static/css/add/styles.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/add/select-field.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/add/building_style.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/add/drag-drop.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/add/rooms_style.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/add/paths_style.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/add/rangeslider.css" type="text/css">
+
+
+    <script src="/static/js/lib/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="/static/js/lib/autocomplete.js"></script>
+    <script src="/static/js/lib/mustache.js"></script>
+    <script src="/static/js/preferences.js"></script>
+    <script src="/static/js/api.js"></script>
+
+    <script src="/static/js/lib/drag-drop.loader.js"></script>
+    <script src="/static/js/select.box.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/map-func/init.js"></script>
+    <script src="/static/js/map-func/marker_building.js"></script>
+    <script src="/static/js/map-func/save_building.js"></script>
+    <script src="/static/js/map-func/save_overlay.js"></script>
+    <script src="/static/js/map-func/save_path.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDw3iHPMlVaMdHLy7IWwaJtDHxZdHaOuI4"></script>
+
+
+    <script src="/static/js/lib/defiant.min.js"></script>
+
+
+    <script>
+        $(function () {
+            initMap();
+        });
+    </script>
+    <style>
+        #map {
+            width: 800px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body class="container">
+<header class="header">
+    <div id="headerInner">
+        <nav class="topMenuRight">
+            <ul>
+                <li url="/static/html/add/include/buildings.html" tmpl="buildingsTmpl"><a>Buildings</a></li>
+                <li url="/static/html/add/include/floors_edit.html" tmpl="floorsEditTmpl"><a>Floor edit</a></li>
+                <li url="/static/html/add/include/rooms.html" tmpl="roomsTmpl"><a>Rooms</a></li>
+                <li url="/static/html/add/include/paths.html" tmpl="pathsTmpl"><a>Paths</a></li>
+
+                <li><a href="/static/html/edit/main_editor.html">Edit</a></li>
+
+            </ul>
+
+        </nav>
+
+
+    </div>
+</header>
+
+<section id="wrapper">
+    <div id="middle">
+        <div id="content">
+            <div id="colLeft">
+                <div id="map"></div>
+            </div>
+            <aside id="colRight">
+                <div class="rightBox">
+                    <div id="sampleArea"></div>
+                </div>
+
+            </aside>
+            <div class="footer" style="float:right">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="main-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #66bb6a">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Getting started</h4>
+            </div>
+            <div class="modal-body">
+                <h3 style="text-align: center">Welcome to InnoMaps plugin!</h3>
+                <p>Choose data you want to add or edit on navigation bar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(window).load(function(){
+        if (localStorage.getItem('showModal') == null) {
+            $('#main-modal').modal('show');
+            localStorage.setItem('showModal', true);
+        }
+    });
+</script>
+</body>
+</html>

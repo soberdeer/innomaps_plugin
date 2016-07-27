@@ -1,7 +1,5 @@
 var room_marker;
 var room_markers = [];
-var floor;
-//for tests = UI coords
 
 var room_red = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
 var door_blue = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
@@ -10,6 +8,8 @@ var wc_yellow = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
 var other_purple = 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png';
 
 $(function() {
+    fillBuildingsSelect().then(fillFloorsSelect);
+    $('#building-options').change(fillFloorsSelect);
     fillRoomsSelect();
 });
 
@@ -23,10 +23,28 @@ function fillRoomsSelect() {
     });
 }
 
-function dropdownRoomType() {
-    var select = $('#room-param').find('#type-options');
-    var options = window._global.roomtype;
-    dropdown(select, options);
+function fillFloorsSelect() {
+    var buildingId = $('#building-options').val();
+    $('#floor-options').empty();
+    Promise.resolve(getBuildingFloorOverlays())
+        .then(filterBuildingOverlays)
+        .then(addFloorOptions);
+
+    function filterBuildingOverlays(result) {
+        return result.buildingflooroverlays.filter(function(overlay) {
+            return overlay.building_id == buildingId;
+        });
+    }
+
+    function addFloorOptions(overlays) {
+        var select = document.getElementById('floor-options');
+        overlays.forEach(function(overlay) {
+            var element = document.createElement('option');
+            element.textContent = overlay.floor;
+            element.value = overlay.floor;
+            select.add(element);
+        });
+    }
 }
 
 function addMarkerRoom() {
@@ -72,41 +90,24 @@ function typeSwitch(type) {
 }
 
 function showOverlay() {
-
-    var building_id = $('#room-param').find('#building-options').val();
-    var floor = $('#room-param').find('#floor-num').val();
-    var buildingflooroverlay = JSON.search(window._global.buildingflooroverlay, '//*[buildingid="' + building_id + '" and floor="' + floor + '"]');
-
-    addOverlayRooms(buildingflooroverlay);
-}
-
-function getImage(buildingflooroverlay) {
-    var srcImage = JSON.search(window._global.photo, '//*[id="' + buildingflooroverlay.photoid + '"]')[0].url;
-    return srcImage;
-}
-
-function addOverlayRooms(buildingflooroverlay) {
-
-    var southwestlatitude = buildingflooroverlay.southwestlatitude;
-    var southwestlongitude = buildingflooroverlay.southwestlongitude;
-    var northeastlatitude = buildingflooroverlay.northeastlatitude;
-    var northeastlongitude = buildingflooroverlay.northeastlongitude;
-
-    var bounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(southwestlatitude, southwestlongitude),
-        new google.maps.LatLng(northeastlatitude, northeastlongitude));
-
-    overlay = new addOverlayRoomConstructor(bounds, srcImage, map);
-
+    var building_id = $('#building-options').val();
+    var floor = $('#floor-options').val();
+    Promise.resolve(getBuildingFloorOverlays())
+        .then(function(result) {
+            var overlay = result.buildingflooroverlays.filter(function(overlay) {
+                return overlay.building_id == building_id && overlay.floor == floor;
+            })[0];
+            if (overlay) {
+                addOverlayRooms(overlay);
+            }
+        });
 }
 
 function clearMarkersRoom() {
-    room_markers.setMap(null);
+    if (room_marker) {
+        room_marker.setMap(null);
+    }
     room_markers = [];
-}
-
-function getMaxFloor() {
-    return floor_num;
 }
 
 function clearForm() {

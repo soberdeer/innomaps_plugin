@@ -1,0 +1,70 @@
+<script src="/static/js/drag-drop.box.js"></script>
+<script src="/static/js/select-building.js"></script>
+
+<script>
+    $(function () {
+        fillBuildingsSelect();
+    });
+</script>
+<script src="/static/js/map-func/overlay.js"></script>
+<script src="/static/js/floor.js"></script>
+
+<select id="files-overlays" style="display:none"></select>
+
+<br>
+<br>
+
+Select building
+<br>
+<select id="building-options" class="building"></select>
+<br>
+<br>
+
+
+<form id="floor-num_floor-edit" action="form_action.asp" target="_blank">
+    <input name="q" id="floor" value="" placeholder="Floor..." type="number">
+    <br>
+    <br>
+</form>
+
+
+<button type="button" id="add-overlay" class="btn btn-default" data-toggle="modal" data-target="#dragdrop-modal">Upload images</button>
+<br>
+<br>
+
+<button id="hide-overlays" class="btn btn-default" onclick=" hideOverlay()">Hide all overlays</button>
+<button id="show-overlays" class="btn btn-default" onclick=" showOverlay()">Show all overlays</button>
+<br>
+<br>
+
+<button id="hide-markers" class="btn btn-default" onclick=" hideMarkers()">Hide all markers</button>
+<button id="show-markers" class="btn btn-default" onclick=" showMarkers()">Show all markers</button>
+<br>
+<br>
+<button id="delete-markers" class="btn btn-danger" onclick=" deleteAll()">Delete all</button>
+<button id="save-overlay" class="btn btn-success" onclick=" saveOverlay()">Save overlay</button>
+
+<div id="dragdrop-modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="drag-and-drop-zone" class="uploader">
+                    <div>Drag &amp; Drop Images Here</div>
+                    <div class="or">-or-</div>
+                    <div class="browser">
+                        <label>
+                            <span>Click to open the file Browser</span>
+                            <input type="file" name="files[]" multiple="multiple" title='Click to add Files'>
+                        </label>
+                    </div>
+                </div>
+                <div id="fileList"></div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-ok" type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

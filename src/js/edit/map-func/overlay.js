@@ -8,14 +8,14 @@ DebugOverlay.prototype = new google.maps.OverlayView();
 function addOverlay() {
     if (markers.length >= 1 || overlay !== null) {
         deleteAll();
-    }
+    } 
     var swBound = new google.maps.LatLng(55.752828, 48.742661);
     var neBound = new google.maps.LatLng(55.754597, 48.744469);
     var bounds = new google.maps.LatLngBounds(swBound, neBound);
 
     var srcImage = $("#files-overlays").val();
 
-    overlay = new DebugOverlay(bounds, this.value, map);
+    overlay = new DebugOverlay(bounds, srcImage, map);
 
     markerA = new google.maps.Marker({
         position: swBound,
@@ -185,9 +185,7 @@ DebugOverlay.prototype.onRemove = function () {
 };
 
 function hideOverlay() {
-    if (overlay) {
-      overlay.setMap(null);
-    }
+    overlay.setMap(null);
 }
 
 function hideMarkers() {
@@ -219,19 +217,12 @@ function setMapOnAll(arr, map) {
     }
 }
 
-function imagesDropdown(images) {
+function imagesDropdown() {
     var select = document.getElementById("files-overlays");
-    var emptySelect = !$(select).val();
     images.forEach(function(image){
         var element = document.createElement("option");
         element.textContent = image.name;
         element.value = image.url;
         select.add(element);
-    });
-    if (images.length) {
-      $(select).show();
-    }
-    if (emptySelect) {
-      addOverlay.call(select);
-    }
+    });    
 }

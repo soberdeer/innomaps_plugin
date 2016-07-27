@@ -1,23 +1,14 @@
 //-- Some functions to work with our UI
 
 function add_log(message) {
-    var template = '<li>[' + new Date().getTime() + '] - ' + message + '</li>';
-
-    $('#debug').find('ul').prepend(template);
-}
-
-function add_file(id, file) {
-    var template = '' +
-        '<div class="file" id="uploadFile' + id + '">' +
-        '<div class="info">' +
-        '#1 - <span class="filename" title="Size: ' + file.size + 'bytes - Mimetype: ' + file.type + '">' + file.name + '</span><br /><small>Status: <span class="status">Waiting</span></small>' +
-        '</div>' +
-        '<div class="bar">' +
-        '<div class="progress" style="width:0%"></div>' +
-        '</div>' +
-        '</div>';
+    var template = '<div class="info" style="text-color"><span class="status">[' + new Date().getTime() + '] - ' + message + '</span></div>';
 
     $('#fileList').prepend(template);
+}
+
+
+function remove_error() {
+    $("#fileList").html("");
 }
 
 function update_file_status(id, status, message) {
@@ -34,36 +25,35 @@ function initDmUploader(containerSelector, success) {
         dataType: 'json',
         allowedTypes: 'image/*',
         onInit: function () {
-            add_log('Penguin initialized :)');
+           // add_log('Penguin initialized :)');
         },
         onBeforeUpload: function (id) {
-            add_log('Starting the upload of #' + id);
+            //add_log('Starting the upload of #' + id);
 
-            update_file_status(id, 'uploading', 'Uploading...');
+          //  update_file_status(id, 'uploading', 'Uploading...');
         },
         onNewFile: function (id, file) {
-            add_log('New file added to queue #' + id);
+            //add_log('New file added to queue #' + id);
 
-            add_file(id, file);
         },
         onComplete: function () {
-            add_log('All pending tranfers finished');
+            //add_log('All pending tranfers finished');
         },
         onUploadProgress: function (id, percent) {
             var percentStr = percent + '%';
 
-            update_file_progress(id, percentStr);
+            //update_file_progress(id, percentStr);
         },
         onUploadSuccess: function (id, data) {
-            add_log('Upload of file #' + id + ' completed');
+            //add_log('Upload of file #' + id + ' completed');
 
-            add_log('Server Response for file #' + id + ': ' + JSON.stringify(data));
+            //add_log('Server Response for file #' + id + ': ' + JSON.stringify(data));
             if (success) {
                 success.call(window, data);
             }
-            update_file_status(id, 'success', 'Upload Complete');
+            //update_file_status(id, 'success', 'Upload Complete');
 
-            update_file_progress(id, '100%');
+            //update_file_progress(id, '100%');
         },
         onUploadError: function (id, message) {
             add_log('Failed to Upload file #' + id + ': ' + message);

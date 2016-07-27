@@ -7,8 +7,9 @@ module.exports = function(grunt) {
         'grunt/**/*.js'
       ],
       options: {
+        debug: true,
         curly: true,
-        eqeqeq: true,
+        eqeqeq: false,
         forin: true,
         freeze: true,
         maxdepth: 5,

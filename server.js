@@ -19,7 +19,8 @@ app.use('/upload', multipartMiddleware, function(req, res) {
         var newPath = path.join(__dirname, '/uploads/', fileName);
         fs.writeFile(newPath, data, function(err) {
           res.json({
-              url: path.join(config.serverUrl, '/image', fileName)
+              url: config.serverUrl + 'image/' + fileName,
+              name: oldName
           });
         });
     });
@@ -30,7 +31,7 @@ app.use('/image/:img', function(req, res) {
 });
 
 app.use('/', function(req, res) {
-    res.sendFile(path.join(__dirname, '/build/html/main.html'));
+    res.sendFile(path.join(__dirname, '/build/html/add/main.html'));
 });
 
 app.listen(8090, function() {

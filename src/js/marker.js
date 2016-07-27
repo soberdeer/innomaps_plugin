@@ -1,4 +1,6 @@
-function addOverlayRoomConstructor(bounds, image, map) {
+Marker.prototype = new google.maps.OverlayView();
+
+function Marker(bounds, image, map) {
 
     // Initialize all properties.
     this.bounds_ = bounds;
@@ -18,7 +20,7 @@ function addOverlayRoomConstructor(bounds, image, map) {
  * onAdd is called when the map's panes are ready and the overlay has been
  * added to the map.
  */
-addOverlayRoomConstructor.prototype.onAdd = function () {
+Marker.prototype.onAdd = function () {
 
     var div = document.createElement('div');
     div.style.borderStyle = 'none';
@@ -40,7 +42,7 @@ addOverlayRoomConstructor.prototype.onAdd = function () {
     panes.overlayLayer.appendChild(div);
 };
 
-addOverlayRoomConstructor.prototype.draw = function () {
+Marker.prototype.draw = function () {
 
     // We use the south-west and north-east
     // coordinates of the overlay to peg it to the correct position and size.
@@ -63,7 +65,7 @@ addOverlayRoomConstructor.prototype.draw = function () {
 
 // The onRemove() method will be called automatically from the API if
 // we ever set the overlay's map property to 'null'.
-addOverlayRoomConstructor.prototype.onRemove = function () {
+Marker.prototype.onRemove = function () {
     this.div_.parentNode.removeChild(this.div_);
     this.div_ = null;
 };

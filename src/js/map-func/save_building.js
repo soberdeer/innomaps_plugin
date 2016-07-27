@@ -1,57 +1,40 @@
-var floor_num;
-window._global.buildings =  window._global.buildings || [];
-
-function creationFailed(e) {
-    console.error('something went wrong', e);
-}
-
 function saveBuilding() {
-    var building_elements = $('#building');
-    // var building_name = building_elements.elements[0].value;
-    floor_num = '7'; //building_elements.find('#floors-val').val();
+    Promise.resolve(createCoordinate({
+            latitude: marker.getPosition().lat(),
+            longitude: marker.getPosition().lng()
+        }))
+        .then(parseCoordinateId)
+        .then(saveBuilding)
+        .catch(creationFailed);
 
-    var streetid = building_elements.find('#street-options').val();
-    var building_num = building_elements.find('#home-number').val();
-    var building_block = building_elements.find('#home-block').val();
-    var description = building_elements.find('#home-description').val();
-    var lat = marker.getPosition().lat();
-    var lng = marker.getPosition().lng();
-
-
-    var saveBuilding = function(coordinateid) {
+    function saveBuilding(coordinateid) {
         var building = {
-            number: building_num,
-            block: building_block,
-            description: description,
+            number: $('#home-number').val(),
+            block: $('#home-block').val(),
+            description: $('#home-description').val(),
             coordinateid: coordinateid,
-            streetid: streetid
+            streetid: $('#street-options').val()
         };
-        Promise.resolve(createBuilding(building)).then(function(result) {
-            var parsedResult = /0\. Building with id=(\d+) was successfully created/.exec(result);
-            if (parsedResult && parsedResult[1]) {
-                building.id = parsedResult[1];
-                window._global.buildings.push(building);
-                return parsedResult[1];
-            } else {
-                throw new Error('building creation failed');
-            }
-        }).catch(creationFailed);
-    };
+        Promise.resolve(createBuilding(building))
+            .then(parseBuildingId)
+            .catch(creationFailed);
+    }
 
-    var coordinatePromise = Promise.resolve(createCoordinate({
-        latitude: lat,
-        longitude: lng
-    })).then(function(result) {
+    function parseBuildingId(result) {
+        var parsedResult = /0\. Building with id=(\d+) was successfully created/.exec(result);
+        if (parsedResult && parsedResult[1]) {
+            return parsedResult[1];
+        } else {
+            throw new Error('building creation failed');
+        }
+    }
+
+    function parseCoordinateId(result) {
         var parsedResult = /0\. Coordinate with id=(\d+) was successfully created/.exec(result);
         if (parsedResult && parsedResult[1]) {
             return parsedResult[1];
         } else {
             throw new Error('coordinate creation failed');
         }
-    }).then(saveBuilding).catch(creationFailed);
+    }
 }
-
-
-//todo: save room
-
-//todo: save paths

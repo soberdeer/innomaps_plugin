@@ -1,12 +1,12 @@
 window._global = window._global || {};
 
-$(function() {
+$(function () {
     $("#sampleArea").empty();
-    $(".topMenuRight li").each(function(i, item) {
-        item.onclick = function() {
-          $('#sampleArea')
-            .empty()
-            .load(item.getAttribute("url"));
+    $(".topMenuRight li").each(function (i, item) {
+        item.onclick = function () {
+            $('#sampleArea')
+                .empty()
+                .load(item.getAttribute("url"));
         };
     });
     getCoordinateTypes();
@@ -19,7 +19,7 @@ function render(template, data) {
 }
 
 function dropdown(select, options) {
-    options.forEach(function(street){
+    options.forEach(function (street) {
         var element = document.createElement("option");
         element.textContent = street.name;
         element.value = street.id;
@@ -28,48 +28,43 @@ function dropdown(select, options) {
 }
 
 function getCoordinateTypes() {
-  return $.getJSON(window._global.urls.innoServerUrl + '/resources/coordinatetypes', function(data) {
-      window._global.coordinatetypes = data.coordinatetypes || [];
-  }, function() {
-    window._global.coordinatetypes = window._global.coordinatetypes || [];
-  });
-    return data.coordinatetypes;
+    return $.getJSON(window._global.urls.innoServerUrl + '/resources/coordinatetypes', function (data) {
+        window._global.coordinatetypes = data.coordinatetypes || [];
+    }, function () {
+        window._global.coordinatetypes = window._global.coordinatetypes || [];
+    });
 }
 
 function getRoomTypes() {
-    return $.getJSON(window._global.urls.innoServerUrl + '/resources/roomtypes', function(data) {
+    return $.getJSON(window._global.urls.innoServerUrl + '/resources/roomtypes', function (data) {
         window._global.roomtypes = data.roomtypes || [];
-    }, function() {
-      window._global.roomtypes = window._global.roomtypes || [];
+    }, function () {
+        window._global.roomtypes = window._global.roomtypes || [];
     });
 }
 
 function getStreets() {
-    return $.getJSON(window._global.urls.innoServerUrl + '/resources/streets', function(data) {
+    return $.getJSON(window._global.urls.innoServerUrl + '/resources/streets', function (data) {
         window._global.streets = data.streets || [];
     });
 }
 
 function getBuildings() {
-    return $.getJSON(window._global.urls.innoServerUrl + '/resources/buildings', function(data) {
-        window._global.building = data.building || [];
-    });
+    return $.getJSON(window._global.urls.innoServerUrl + '/resources/buildings');
 }
 
-function getBuildingFloorOverlay() {
-    return $.getJSON(window._global.urls.innoServerUrl + '/resources/buildingflooroverlay', function(data) {
-        window._global.buildingflooroverlay = {} && data.buildingflooroverlay || [];
-    });
+function getBuildingFloorOverlays() {
+    return $.getJSON(window._global.urls.innoServerUrl + '/resources/buildingflooroverlays');
 }
 
-function getPhoto() {
-    return $.getJSON(window._global.urls.innoServerUrl + '/resources/photo', function(data) {
-        window._global.photo = {} && data.photo || [];
-    });
+function getPhotos() {
+    return $.getJSON(window._global.urls.innoServerUrl + '/resources/photos');
 }
 
 function getCoordinates() {
-    return $.getJSON(window._global.urls.innoServerUrl + '/resources/coordinate', function(data) {
-        window._global.coordinate = {} && data.coordinate || [];
-    });
+    return $.getJSON(window._global.urls.innoServerUrl + '/resources/coordinates');
+}
+
+function creationFailed(e) {
+    console.error('something went wrong', e);
 }

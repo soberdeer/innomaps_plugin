@@ -1,20 +1,12 @@
-<script src="/static/js/building.js"></script>
+<script src="/static/js/edit/building.js"></script>
 
 <form id="building" action="form_action.asp" target="_blank">
     <input name="q" id="floors-num" value="" placeholder="Floors number..."><br><br>
-    <select id="street-options" class="street">
-    </select><br><br>
     <input name="q" id="home-number" value="" placeholder="Building number..."><br><br>
     <input name="q" id="home-block" value="" placeholder="Building block..."><br><br>
     <input name="q" id="home-description" value="" placeholder="Description..."><br><br>
 </form>
-
-<button id="add_marker" onclick="addMarkerBuilding()">Add marker</button>
 <br>
-
-
-<br>
-<button id="save_marker" onclick="saveBuilding()">Save marker</button>
-
+<button id="save_marker" class="btn btn-success" onclick="editBuilding()">Save marker</button>
 <br>
 </div>

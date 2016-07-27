@@ -8,10 +8,10 @@ function checkFill() {
             break;
         }
     }
-    document.getElementById("disabled").disabled = !allFilled;
+    document.getElementById("add_marker").disabled = !allFilled;
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     var inputs = document.getElementsByTagName('building');
     for (var i = 0; i < inputs.length; i++) {
         if (inputs[i].type === "text") {
