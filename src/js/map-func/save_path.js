@@ -1,7 +1,9 @@
 function savePath(lines) {
     Promise.all(createEdges(lines))
         .then(function () {
+            if (!edgesIds.filter(function(id){return !id;}).length) {
                 alert('All paths are created successfully!');
+            }
         }).catch(creationFailed);
 }
 
