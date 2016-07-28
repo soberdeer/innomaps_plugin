@@ -52,7 +52,7 @@ function addMarkerRoom() {
     var type = $('#room-param').find('#type-options').val();
     setMarker(type);
     map.setCenter(room_marker.getPosition());
-    room_markers.push(room_marker);
+    markers.push(room_marker);
 }
 
 function setMarker(type) {
@@ -101,13 +101,6 @@ function showOverlay() {
                 addOverlayRooms(overlay);
             }
         });
-}
-
-function clearMarkersRoom() {
-    if (room_marker) {
-        room_marker.setMap(null);
-    }
-    room_markers = [];
 }
 
 function clearForm() {

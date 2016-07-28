@@ -190,33 +190,16 @@ function hideOverlay() {
     }
 }
 
-function hideMarkers() {
-    setMapOnAllMarkers(null);
-}
-
 function showOverlay() {
     overlay.setMap(map);
 }
 
-function showMarkers() {
-    setMapOnAllMarkers(map);
-}
 
 function deleteAll() {
     hideOverlay();
     hideMarkers();
     overlay = null;
     markers = [];
-}
-
-function setMapOnAllMarkers(map) {
-    setMapOnAll(markers, map);
-}
-
-function setMapOnAll(arr, map) {
-    for (var i = 0; i < arr.length; i++) {
-        arr[i].setMap(map);
-    }
 }
 
 function imagesDropdown(images) {

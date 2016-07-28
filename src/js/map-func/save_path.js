@@ -1,16 +1,16 @@
 function savePath(lines) {
     Promise.all(createEdges(lines))
-        .then(function () {
-            if (!edgesIds.filter(function(id){return !id;}).length) {
-                alert('All paths are created successfully!');
-            }
+        .then(function(edgesIds) {
+          if (!edgesIds.filter(function(id){return !id;}).length) {
+            alert('All paths are created successfully!');
+          }
         }).catch(creationFailed);
 }
 
 function createEdges(lines) {
-        return lines.map(function (line) {
-            return createEdgeFromLine(line);
-        });
+    return lines.map(function(line) {
+        return createEdgeFromLine(line);
+    });
 }
 
 function createEdgeFromLine(line) {
@@ -22,9 +22,9 @@ function createEdgeFromLine(line) {
 
     return Promise.resolve(createEdge(edge))
         .then(parseEdgeId)
-        .then(function () {
-            line.start.unbounce();
-            line.end.unbounce();
+        .then(function() {
+          line.start.unbounce();
+          line.end.unbounce();
         }).catch(creationFailed);
 
     function parseEdgeId(result) {
@@ -41,4 +41,3 @@ function createEdgeFromLine(line) {
         }
     }
 }
-

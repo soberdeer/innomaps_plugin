@@ -4,6 +4,7 @@ $(function () {
     $("#sampleArea").empty();
     $(".topMenuRight li").each(function (i, item) {
         item.onclick = function () {
+          deleteMarkers();
             $('#sampleArea')
                 .empty()
                 .load(item.getAttribute("url"));
@@ -67,4 +68,27 @@ function getCoordinates() {
 
 function creationFailed(e) {
     console.error('something went wrong', e);
+}
+
+function setMapOnAllMarkers(map) {
+    setMapOnAll(markers, map);
+}
+
+function setMapOnAll(arr, map) {
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].setMap(map);
+    }
+}
+
+function showMarkers() {
+    setMapOnAllMarkers(map);
+}
+
+function hideMarkers() {
+    setMapOnAllMarkers(null);
+}
+
+function deleteMarkers() {
+  hideMarkers();
+  markers = [];
 }

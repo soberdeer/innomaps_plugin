@@ -1,7 +1,8 @@
+var markers = [];
+
 $(function() {
     var startPoint;
     var lines = [];
-    var markers = [];
 
     fillBuildingsSelect().then(fillFloorsSelect).then(downloadMarkers);
     $('#building-options').change(fillFloorsSelect);
