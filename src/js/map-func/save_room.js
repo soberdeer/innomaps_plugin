@@ -10,26 +10,27 @@ function saveRoom() {
     var lng = room_marker.getPosition().lng();
 
 
-    var saveRoom = function(coordinateid) {
+    var saveRoom = function (coordinateid) {
         Promise.resolve(createRoom({
             buildingid: buildingid,
             number: number,
             coordinateid: coordinateid,
             typeid: typeid
-        })).then(function(result) {
+        })).then(function (result) {
             var parsedResult = /0\. Room with id=(\d+) was successfully created/.exec(result);
             if (parsedResult && parsedResult[1]) {
                 return parsedResult[1];
             } else {
                 throw new Error('room creation failed');
             }
-        }).catch(creationFailed);
+        }).then (alert(number + ' room successfully created!'))
+        .catch(creationFailed);
     };
 
     var coordinatePromise = Promise.resolve(createCoordinate({
         latitude: lat,
         longitude: lng
-    })).then(function(result) {
+    })).then(function (result) {
         var parsedResult = /0\. Coordinate with id=(\d+) was successfully created/.exec(result);
         if (parsedResult && parsedResult[1]) {
             return parsedResult[1];

@@ -23,6 +23,7 @@ function saveBuilding() {
     function parseBuildingId(result) {
         var parsedResult = /0\. Building with id=(\d+) was successfully created/.exec(result);
         if (parsedResult && parsedResult[1]) {
+            alert('Building successfully created!');
             return parsedResult[1];
         } else {
             throw new Error('building creation failed');

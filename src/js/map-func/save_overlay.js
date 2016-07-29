@@ -33,7 +33,8 @@ function saveOverlay() {
             .then(function () {
                 deleteAll();
                 clearMarker();
-            }).catch(creationFailed);
+            }).then (alert('Overlay successfully created!'))
+            .catch(creationFailed);
     }
 
     function parseFloorOverlayId(result) {

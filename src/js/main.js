@@ -68,6 +68,7 @@ function getCoordinates() {
 
 function creationFailed(e) {
     console.error('something went wrong', e);
+    alert('Creation failed');
 }
 
 function setMapOnAllMarkers(map) {
